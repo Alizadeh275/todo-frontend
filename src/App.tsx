@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-lg">
-      <h1 className="text-2xl font-bold mb-4">Todo List</h1>
+      <h1 className="text-2xl font-iran mb-4">لیست کارها </h1>
 
       {/* Form اضافه کردن todo */}
       <form onSubmit={handleAddTodo} className="flex mb-4 gap-2">
@@ -66,7 +66,7 @@ function App() {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
         >
-          Add
+          اضافه کردن
         </button>
       </form>
 
@@ -77,9 +77,8 @@ function App() {
             className="flex justify-between items-center p-2 border rounded-md"
           >
             <span
-              className={`cursor-pointer ${
-                todo.completed ? "line-through text-gray-500" : ""
-              }`}
+              className={`cursor-pointer ${todo.completed ? "line-through text-gray-500" : ""
+                }`}
               onClick={() => handleToggle(todo)}
             >
               {todo.todo}
@@ -88,7 +87,7 @@ function App() {
               onClick={() => handleDelete(todo.id)}
               className="text-red-500 hover:underline"
             >
-              Delete
+              حذف
             </button>
           </li>
         ))}
