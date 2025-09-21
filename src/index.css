@@ -14,8 +14,8 @@
 /* اختیاری: فونت پیش‌فرض پروژه */
 body {
     font-family: "IRANSans", sans-serif;
-        direction: rtl;
-            /* راست‌چین */
-            text-align: right;
-            /* متن‌ها به سمت راست */
+    direction: rtl;
+    /* راست‌چین */
+    text-align: right;
+    /* متن‌ها به سمت راست */
 }
