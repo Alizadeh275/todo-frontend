@@ -47,7 +47,7 @@ function App() {
     setNewTodo("");
   };
 
-  if (loading) return <div className="p-4">Loading...</div>;
+  if (loading) return <div className="p-4 mx-auto text-center">درحال بارگذاری...</div>;
 
   return (
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-lg">
@@ -59,7 +59,7 @@ function App() {
           type="text"
           value={newTodo}
           onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add new todo"
+          placeholder="کار جدید اضافه کن"
           className="flex-1 p-2 border rounded-md"
         />
         <button
