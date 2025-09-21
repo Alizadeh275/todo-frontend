@@ -2,7 +2,14 @@ import axios from "axios";
 
 const API_URL = "https://dummyjson.com/todos";
 
-export interface Todo {
+// export interface Todo {
+//   id: number;
+//   todo: string;
+//   completed: boolean;
+//   userId: number;
+// }
+
+export type Todo = {
   id: number;
   todo: string;
   completed: boolean;
