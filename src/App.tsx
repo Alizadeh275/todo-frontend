@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getTodos, deleteTodo, toggleComplete, addTodo } from "./api/todos";
 import type { Todo } from "./api/todos";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -43,6 +45,7 @@ function App() {
 
     // استفاده از userId ثابت (مثلاً 1) چون DummyJSON نیاز داره
     const created = await addTodo({ todo: newTodo, userId: 1 });
+    console.log(created)
     setTodos([created, ...todos]); // اضافه کردن به بالای لیست
     setNewTodo("");
   };
@@ -53,45 +56,10 @@ function App() {
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-lg">
       <h1 className="text-2xl font-iran mb-4">لیست کارها </h1>
 
-      {/* Form اضافه کردن todo */}
-      <form onSubmit={handleAddTodo} className="flex mb-4 gap-2">
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="کار جدید اضافه کن"
-          className="flex-1 p-2 border rounded-md"
-        />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-        >
-          اضافه کردن
-        </button>
-      </form>
+      <TodoForm
+        newTodo={newTodo} setNewTodo={setNewTodo} handleAddTodo={handleAddTodo} />
 
-      <ul className="space-y-2">
-        {todos.map((todo) => (
-          <li
-            key={todo.id}
-            className="flex justify-between items-center p-2 border rounded-md"
-          >
-            <span
-              className={`cursor-pointer ${todo.completed ? "line-through text-gray-500" : ""
-                }`}
-              onClick={() => handleToggle(todo)}
-            >
-              {todo.todo}
-            </span>
-            <button
-              onClick={() => handleDelete(todo.id)}
-              className="text-red-500 hover:underline"
-            >
-              حذف
-            </button>
-          </li>
-        ))}
-      </ul>
+      <TodoList todos={todos} handleDelete={handleDelete} handleToggle={handleToggle} />
     </div>
   );
 }
