@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import useTodos from "./hooks/useTodos";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
 import ErrorMessage from "./shared/components/ErrorMessage";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
   const [newTodo, setNewTodo] = useState("");
@@ -21,7 +22,7 @@ function App() {
 
   return (<>
     <ToastContainer
-      position="bottom-right"   // options: top-right, top-left, top-center, bottom-right, bottom-left, bottom-center
+      position="top-right"   // options: top-right, top-left, top-center, bottom-right, bottom-left, bottom-center
       autoClose={0}       // auto-close after 3 seconds
       hideProgressBar={false}
       newestOnTop={true}

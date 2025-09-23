@@ -53,9 +53,9 @@ export default function useTodos(limit = 10, skip = 0) {
                 skip: data?.skip ?? skip,
             });
         } catch (err: unknown) {
-            if (err instanceof Error) setError?.("خطا در حذف کار: " + err.message);
-            else setError?.("خطا در حذف کار");
+            showToast("خطا در حذف کار", "error");
             console.error(err);
+
         }
     };
 
@@ -73,9 +73,7 @@ export default function useTodos(limit = 10, skip = 0) {
                 skip: data?.skip ?? skip,
             });
         } catch (err: unknown) {
-            if (err instanceof Error)
-                setError?.("خطا در بروزرسانی وضعیت کار: " + err.message);
-            else setError?.("خطا در بروزرسانی وضعیت کار");
+            showToast("خطا در بروزرسانی وضعیت کار", "error")
             console.error(err);
         }
     };
