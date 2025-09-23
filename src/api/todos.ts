@@ -7,14 +7,7 @@ const api = axios.create({
   timeout: 3000, // 3 seconds
 });
 
-// export interface Todo {
-//   id: number;
-//   todo: string;
-//   completed: boolean;
-//   userId: number;
-// }
-
-export type Todo = {
+export interface Todo {
   id: number;
   todo: string;
   completed: boolean;
