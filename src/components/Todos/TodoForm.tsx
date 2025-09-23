@@ -1,4 +1,5 @@
 import Button from "../../shared/components/Button";
+import Input from "../../shared/components/Input";
 
 type TodoFormProps = {
     newTodo: string;
@@ -12,7 +13,7 @@ export default function TodoForm(
 
     return <>
         <form onSubmit={handleAddTodo} className="flex mb-4 gap-2">
-            <input
+            <Input
                 type="text"
                 value={newTodo}
                 onChange={(e) => setNewTodo(e.target.value)}
