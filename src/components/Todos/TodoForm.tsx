@@ -1,3 +1,5 @@
+import Button from "../../shared/components/Button";
+
 type TodoFormProps = {
     newTodo: string;
     setNewTodo: (value: string) => void;
@@ -17,12 +19,12 @@ export default function TodoForm(
                 placeholder="کار جدید اضافه کن"
                 className="flex-1 p-2 border rounded-md"
             />
-            <button
+            <Button
                 type="submit"
                 className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
             >
                 اضافه کردن
-            </button>
+            </Button>
         </form>
     </>
 }

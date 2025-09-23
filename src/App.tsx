@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getTodos, deleteTodo, toggleComplete, addTodo } from "./api/todos";
 import type { Todo } from "./api/todos";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+import TodoForm from "./components/Todos/TodoForm";
+import TodoList from "./components/Todos/TodoList";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
