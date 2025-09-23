@@ -2,6 +2,7 @@
 import type { Todo } from "../api/todos";
 import { addTodo, deleteTodo, toggleComplete } from "../api/todos";
 import useFetch from "../shared/hooks/useFetch";
+import { showToast } from "../shared/utils/toasts";
 
 type TodosResponse = {
     todos: Todo[];
@@ -30,10 +31,13 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
+            showToast("کار اضافه شد!", "success");
+
         } catch (err: unknown) {
             if (err instanceof Error) setError?.("خطا در اضافه کردن کار: " + err.message);
             else setError?.("خطا در اضافه کردن کار");
             console.error(err);
+            showToast("خطا در اضافه کردن کار!", "error");
         }
     };
 

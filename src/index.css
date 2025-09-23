@@ -10,6 +10,9 @@
     font-style: normal;
     font-display: swap;
 }
+:root {
+  --toastify-font-family: "IRANSans", sans-serif;
+}
 
 /* اختیاری: فونت پیش‌فرض پروژه */
 body {
@@ -18,4 +21,9 @@ body {
     /* راست‌چین */
     text-align: right;
     /* متن‌ها به سمت راست */
+}
+.Toastify__toast {
+  font-family: "IRANSans";
+  font-size: 14px;
+  text-align: right; /* for Persian text */
 }

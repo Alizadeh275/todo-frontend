@@ -3,6 +3,8 @@ import useTodos from "./hooks/useTodos";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
 import ErrorMessage from "./shared/components/ErrorMessage";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [newTodo, setNewTodo] = useState("");
@@ -17,7 +19,17 @@ function App() {
 
   if (loading) return <div className="p-4 text-center">درحال بارگذاری...</div>;
 
-  return (
+  return (<>
+    <ToastContainer
+      position="bottom-right"   // options: top-right, top-left, top-center, bottom-right, bottom-left, bottom-center
+      autoClose={0}       // auto-close after 3 seconds
+      hideProgressBar={false}
+      newestOnTop={true}
+      closeOnClick
+      rtl={true}              // right-to-left (Persian)
+      pauseOnHover
+      draggable
+    />
     <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-lg">
       <h1 className="text-2xl font-iran mb-4">لیست کارها</h1>
 
@@ -37,6 +49,8 @@ function App() {
         handleToggle={handleToggle}
       />
     </div>
+  </>
+
   );
 }
 
