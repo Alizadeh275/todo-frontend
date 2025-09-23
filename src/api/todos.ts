@@ -4,7 +4,7 @@ const API_URL = "https://dummyjson.com/todos";
 
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 3000, // 3 seconds
+  timeout: 6000, // 3 seconds
 });
 
 export interface Todo {
