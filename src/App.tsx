@@ -26,17 +26,28 @@ function App() {
   };
 
   const handleDelete = async (id: number) => {
-    await deleteTodo(id);
-    setTodos(todos.filter((t) => t.id !== id));
+    try {
+      await deleteTodo(id);
+
+    }
+    finally {
+      setTodos(todos.filter((t) => t.id !== id));
+
+    }
   };
 
   const handleToggle = async (todo: Todo) => {
-    await toggleComplete(todo.id, !todo.completed);
-    setTodos(
-      todos.map((t) =>
-        t.id === todo.id ? { ...t, completed: !t.completed } : t
-      )
-    );
+    try {
+      await toggleComplete(todo.id, !todo.completed);
+
+    } finally {
+      setTodos(
+        todos.map((t) =>
+          t.id === todo.id ? { ...t, completed: !t.completed } : t
+        )
+      );
+    }
+
   };
 
   const handleAddTodo = async (e: React.FormEvent) => {
@@ -44,7 +55,8 @@ function App() {
     if (!newTodo.trim()) return;
 
     // استفاده از userId ثابت (مثلاً 1) چون DummyJSON نیاز داره
-    const created = await addTodo({ todo: newTodo, userId: 1 });
+    let created = await addTodo({ todo: newTodo, userId: 1, completed: false });
+    created = { ...created, id: Math.round(Date.now() + Math.random()) }
     console.log(created)
     setTodos([created, ...todos]); // اضافه کردن به بالای لیست
     setNewTodo("");
