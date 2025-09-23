@@ -2,6 +2,8 @@
 
 @import "tailwindcss";
 
+
+
 /* تعریف فونت فارسی */
 @font-face {
     font-family: "IRANSans";
@@ -62,14 +64,15 @@
 
 /* اختیاری: فونت پیش‌فرض پروژه */
 body {
-    font-family: "IRANSans", sans-serif;
-    direction: rtl;
+    font-family: "IRANSans", sans-serif !important;
+    direction: rtl !important;
     /* راست‌چین */
-    text-align: right;
+    text-align: right !important;
     /* متن‌ها به سمت راست */
 }
 .Toastify__toast {
-  font-family: "IRANSans";
-  font-size: 14px;
-  text-align: right; /* for Persian text */
+  direction: rtl !important;
+  font-family: "IRANSans"  !important;
+  text-align: left !important; /* for Persian text */
+  justify-content: start !important;
 }

@@ -52,6 +52,8 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
+            showToast("کار حذف شد!", "success");
+
         } catch (err: unknown) {
             showToast("خطا در حذف کار", "error");
             console.error(err);
@@ -72,6 +74,8 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
+            showToast("کار بروز شد!", "success");
+
         } catch (err: unknown) {
             showToast("خطا در بروزرسانی وضعیت کار", "error")
             console.error(err);

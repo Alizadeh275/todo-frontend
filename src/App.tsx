@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
 import useTodos from "./hooks/useTodos";
 import TodoForm from "./components/Todos/TodoForm";
 import TodoList from "./components/Todos/TodoList";
@@ -23,7 +24,7 @@ function App() {
   return (<>
     <ToastContainer
       position="top-right"   // options: top-right, top-left, top-center, bottom-right, bottom-left, bottom-center
-      autoClose={0}       // auto-close after 3 seconds
+      autoClose={3000}       // auto-close after 3 seconds
       hideProgressBar={false}
       newestOnTop={true}
       closeOnClick
