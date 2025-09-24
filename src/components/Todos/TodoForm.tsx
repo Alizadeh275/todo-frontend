@@ -12,7 +12,7 @@ export default function TodoForm(
 ) {
 
     return <>
-        <form onSubmit={handleAddTodo} className="flex mb-4 gap-2">
+        <form onSubmit={handleAddTodo} className="flex mb-4 gap-2 shadow-xl">
             <Input
                 type="text"
                 value={newTodo}
