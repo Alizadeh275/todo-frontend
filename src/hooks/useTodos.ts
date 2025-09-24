@@ -44,9 +44,10 @@ export default function useTodos(limit = 10, skip = 0) {
 
 
     const handleReorder = (oldIndex: number, newIndex: number) => {
+        if (!data) return; // safety check: do nothing if data is not loaded
         const reordered = arrayMove(todos, oldIndex, newIndex);
         setData?.({
-            ...data!,
+            ...data,
             todos: reordered,
         });
     };
