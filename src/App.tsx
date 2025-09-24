@@ -4,13 +4,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import useTodos from "./hooks/useTodos";
 import TodoForm from "./components/Todos/TodoForm";
-import TodoList from "./components/Todos/TodoList";
+import TodoList from "./components/Todos/SortableTodoList";
 import ErrorMessage from "./shared/components/ErrorMessage";
 
 
 function App() {
   const [newTodo, setNewTodo] = useState("");
-  const { todos, loading, error, handleAdd, handleDelete, handleToggle } = useTodos();
+  const { todos, loading, error, handleAdd, handleDelete, handleToggle,handleReorder } = useTodos();
 
   // Called when the form is submitted
   const handleAddTodo = async (e: React.FormEvent) => {
@@ -47,8 +47,9 @@ function App() {
 
       <TodoList
         todos={todos}
-        handleDelete={handleDelete}
-        handleToggle={handleToggle}
+        onDelete={handleDelete}
+        onToggle={handleToggle}
+        onReorder={handleReorder}
       />
     </div>
   </>

@@ -3,6 +3,7 @@ import type { Todo } from "../api/todos";
 import { addTodo, deleteTodo, toggleComplete } from "../api/todos";
 import useFetch from "../shared/hooks/useFetch";
 import { showToast } from "../shared/utils/toasts";
+import { arrayMove } from "@dnd-kit/sortable"; // install if not already
 
 type TodosResponse = {
     todos: Todo[];
@@ -40,6 +41,18 @@ export default function useTodos(limit = 10, skip = 0) {
             showToast("خطا در اضافه کردن کار!", "error");
         }
     };
+
+
+
+    // inside useTodos
+    const handleReorder = (oldIndex: number, newIndex: number) => {
+        const reordered = arrayMove(todos, oldIndex, newIndex);
+        setData?.({
+            ...data!,
+            todos: reordered,
+        });
+    };
+
 
     const handleDelete = async (id: number) => {
         setError?.(null);
@@ -82,5 +95,5 @@ export default function useTodos(limit = 10, skip = 0) {
         }
     };
 
-    return { todos, loading, error, handleAdd, handleDelete, handleToggle };
+    return { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder };
 }
