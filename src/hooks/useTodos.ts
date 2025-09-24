@@ -31,7 +31,7 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
-            showToast("کار اضافه شد!", "success");
+            showToast("کار با موفقیت اضافه شد!", "success");
 
         } catch (err: unknown) {
             if (err instanceof Error) setError?.("خطا در اضافه کردن کار: " + err.message);
@@ -52,7 +52,7 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
-            showToast("کار حذف شد!", "success");
+            showToast("کار با موفقیت حذف شد!", "success");
 
         } catch (err: unknown) {
             showToast("خطا در حذف کار", "error");
@@ -74,7 +74,7 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
-            showToast("کار بروز شد!", "success");
+            showToast("کار با موفقیت بروز شد!", "success");
 
         } catch (err: unknown) {
             showToast("خطا در بروزرسانی وضعیت کار", "error")
