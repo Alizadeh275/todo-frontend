@@ -72,8 +72,8 @@ body {
 
     background-color: #f9fafb !important; /* Tailwind bg-gray-50 equivalent */
     color: #1f2937 !important;           /* Tailwind text-gray-800 equivalent */
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 .Toastify__toast {
   direction: rtl !important;
