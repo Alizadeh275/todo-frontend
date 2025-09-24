@@ -69,6 +69,11 @@ body {
     /* راست‌چین */
     text-align: right !important;
     /* متن‌ها به سمت راست */
+
+    background-color: #f9fafb !important; /* Tailwind bg-gray-50 equivalent */
+    color: #1f2937 !important;           /* Tailwind text-gray-800 equivalent */
+    margin: 0;
+    padding: 0;
 }
 .Toastify__toast {
   direction: rtl !important;
