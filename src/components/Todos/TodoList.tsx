@@ -1,6 +1,5 @@
 import TodoItem from "./TodoItem";
 import type { Todo } from "../../api/todos";
-import Button from "../../shared/components/Button";
 
 type TodoListProps = {
     todos: Todo[];
@@ -12,10 +11,7 @@ export default function TodoList({ todos, handleToggle, handleDelete }: TodoList
     return (
         <ul className="space-y-2">
             {todos.map((todo) => (
-                <li key={todo.id} className="flex justify-between items-center p-2 border rounded-md">
-                    <TodoItem todo={todo} onToggle={handleToggle} />
-                    <Button className="cursor-pointer" onClick={() => handleDelete(todo.id)}>❌</Button>
-                </li>
+                <TodoItem todo={todo} onToggle={handleToggle} handleDelete={handleDelete} />
             ))}
         </ul>
     );

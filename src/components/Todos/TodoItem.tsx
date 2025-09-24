@@ -1,11 +1,13 @@
 import type { Todo } from "../../api/todos";
+import Button from "../../shared/components/Button";
 
 type TodoItemProps = {
     todo: Todo;
     onToggle: (todo: Todo) => void;
+    handleDelete: (id: number) => void;
+
 };
 
-// Define 10 nice light colors (you can adjust them)
 const COLORS = [
     "bg-pink-100 text-pink-800",
     "bg-purple-100 text-purple-800",
@@ -19,17 +21,26 @@ const COLORS = [
     "bg-cyan-100 text-cyan-800",
 ];
 
-export default function TodoItem({ todo, onToggle }: TodoItemProps) {
-    // Pick color deterministically (stable, not random each render)
+export default function TodoItem({ todo, onToggle, handleDelete }: TodoItemProps) {
     const colorClass = COLORS[todo.id % COLORS.length];
 
     return (
-        <span
-            className={`cursor-pointer px-2 py-1 rounded ${colorClass} ${todo.completed ? "line-through opacity-60" : ""
-                }`}
-            onClick={() => onToggle(todo)}
-        >
-            {todo.todo}
-        </span>
+        <li key={todo.id} className={`flex justify-between items-center 
+            cursor-pointer
+            p-2 border rounded-md ${colorClass}                   
+            transition-transform transform 
+                  hover:scale-101 hover:shadow-lg 
+                  duration-200 ease-out`}>
+            <span
+                className={`px-3 py-1 rounded ${colorClass} 
+                  ${todo.completed ? "line-through opacity-60" : ""}`}
+                onClick={() => onToggle(todo)}
+            >
+                {todo.todo}
+            </span>
+            <Button className="cursor-pointer" onClick={() => handleDelete(todo.id)}>❌</Button>
+
+        </li>
+
     );
 }
