@@ -43,8 +43,6 @@ export default function useTodos(limit = 10, skip = 0) {
     };
 
 
-
-    // inside useTodos
     const handleReorder = (oldIndex: number, newIndex: number) => {
         const reordered = arrayMove(todos, oldIndex, newIndex);
         setData?.({
