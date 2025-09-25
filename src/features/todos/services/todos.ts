@@ -7,12 +7,7 @@ const api = axios.create({
   timeout: 6000, // 3 seconds
 });
 
-export interface Todo {
-  id: number;
-  todo: string;
-  completed: boolean;
-  userId: number;
-}
+
 
 // واکشی todos
 export const getTodos = async (limit = 10, skip = 0) => {

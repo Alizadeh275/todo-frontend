@@ -1,4 +1,4 @@
-import TodosContainer from "./components/Todos/TodosContainer"
+import TodosContainer from "./features/todos/containers/TodosContainer"
 
 function App() {
   return (

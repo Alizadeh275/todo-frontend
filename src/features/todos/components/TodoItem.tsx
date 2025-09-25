@@ -1,5 +1,5 @@
-import type { Todo } from "../../api/todos";
-import Button from "../../shared/components/Button";
+import type { Todo } from "../services/todos";
+import Button from "../../../shared/components/Button";
 
 type TodoItemProps = {
     todo: Todo;

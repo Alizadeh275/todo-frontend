@@ -1,5 +1,5 @@
-import Button from "../../shared/components/Button";
-import Input from "../../shared/components/Input";
+import Button from "../../../shared/components/Button";
+import Input from "../../../shared/components/Input";
 
 type TodoFormProps = {
     newTodo: string;

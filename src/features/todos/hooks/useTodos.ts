@@ -1,16 +1,12 @@
 // hooks/useTodos.ts
-import type { Todo } from "../api/todos";
-import { addTodo, deleteTodo, toggleComplete } from "../api/todos";
-import useFetch from "../shared/hooks/useFetch";
-import { showToast } from "../shared/utils/toasts";
 import { arrayMove } from "@dnd-kit/sortable"; // install if not already
 
-type TodosResponse = {
-    todos: Todo[];
-    total: number;
-    limit: number;
-    skip: number;
-};
+import useFetch from "../../../shared/hooks/useFetch";
+import { showToast } from "../../../shared/utils/toasts";
+import type { Todo, TodosResponse } from "../types/todos";
+import { addTodo, deleteTodo, toggleComplete } from "../services/todos";
+
+
 
 export default function useTodos(limit = 10, skip = 0) {
     const { data, loading, error, setData, setError } = useFetch<TodosResponse>(

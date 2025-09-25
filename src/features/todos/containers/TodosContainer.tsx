@@ -3,11 +3,11 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { ClipLoader } from "react-spinners";
 
-import useTodos from "../../hooks/useTodos";
-import TodoForm from "./TodoForm";
-import TodoList from "./SortableTodoList";
-import ErrorMessage from "../../shared/components/ErrorMessage";
-import AnalogClock from "../Clock/AnalogClock";
+import useTodos from "../hooks/useTodos";
+import TodoForm from "../components/TodoForm";
+import TodoList from "../components/SortableTodoList";
+import ErrorMessage from "../../../shared/components/ErrorMessage";
+import AnalogClock from "../../clock/AnalogClock";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
