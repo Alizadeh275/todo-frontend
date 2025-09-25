@@ -11,7 +11,7 @@ import AnalogClock from "../Clock/AnalogClock";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
-  const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos();
+  const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(6, 0);
 
   // Called when the form is submitted
   const handleAddTodo = async (e: React.FormEvent) => {
