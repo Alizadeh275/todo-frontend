@@ -39,7 +39,7 @@ function TodosContainer() {
         pauseOnHover
         draggable
       />
-      <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-lg">
+      <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl">
         <div className="flex justify-center mb-4">
           <AnalogClock size={130} />
         </div>
