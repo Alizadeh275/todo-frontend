@@ -12,7 +12,10 @@ export default function TodoForm(
 ) {
 
     return <>
-        <form onSubmit={handleAddTodo} className="flex mb-4 gap-2 shadow-xl">
+        <form
+            onSubmit={handleAddTodo}
+            className="flex flex-col sm:flex-row mb-4 gap-2 shadow-xl"
+        >
             <Input
                 type="text"
                 value={newTodo}
@@ -22,10 +25,11 @@ export default function TodoForm(
             />
             <Button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full sm:w-auto"
             >
                 اضافه کردن
             </Button>
         </form>
+
     </>
 }
