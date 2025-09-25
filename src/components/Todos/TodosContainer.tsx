@@ -7,6 +7,7 @@ import useTodos from "../../hooks/useTodos";
 import TodoForm from "./TodoForm";
 import TodoList from "./SortableTodoList";
 import ErrorMessage from "../../shared/components/ErrorMessage";
+import AnalogClock from "../Clock/AnalogClock";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
@@ -39,7 +40,9 @@ function TodosContainer() {
         draggable
       />
       <div className="max-w-md mx-auto mt-10 p-4 border rounded-xl shadow-lg">
-        <h1 className="text-2xl font-iran mb-4">لیست کارها</h1>
+        <div className="flex justify-center mb-4">
+          <AnalogClock size={130} />
+        </div>
 
         {error && <ErrorMessage text={error} />}
 
@@ -48,6 +51,7 @@ function TodosContainer() {
           setNewTodo={setNewTodo}
           handleAddTodo={handleAddTodo}
         />
+        {/* <h1 className="text-2xl font-iran mb-4">لیست کارها:</h1> */}
 
         <TodoList
           todos={todos}
