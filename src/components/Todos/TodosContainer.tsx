@@ -41,7 +41,7 @@ function TodosContainer() {
       />
       <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl">
         <div className="flex justify-center mb-4">
-          <AnalogClock size={130} />
+          <AnalogClock size={140} />
         </div>
 
         {error && <ErrorMessage text={error} />}
