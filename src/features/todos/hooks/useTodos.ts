@@ -1,5 +1,5 @@
 // hooks/useTodos.ts
-import { arrayMove } from "@dnd-kit/sortable"; // install if not already
+import { arrayMove } from "@dnd-kit/sortable";
 
 import useFetch from "../../../shared/hooks/useFetch";
 import { showToast } from "../../../shared/utils/toasts";
