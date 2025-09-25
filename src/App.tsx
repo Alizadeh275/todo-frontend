@@ -1,5 +1,5 @@
 import AnalogClock from "./components/Clock/AnalogClock";
-import Todos from "./components/Todos/Todos";
+import TodosContainer from "./components/Todos/TodosContainer"
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
         <AnalogClock size={150} /> 
       </div>
     
-        <Todos />
+        <TodosContainer />
     </div>
   );
 }

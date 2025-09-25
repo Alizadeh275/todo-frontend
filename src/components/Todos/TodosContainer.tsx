@@ -8,7 +8,7 @@ import TodoForm from "./TodoForm";
 import TodoList from "./SortableTodoList";
 import ErrorMessage from "../../shared/components/ErrorMessage";
 
-function Todos() {
+function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
   const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos();
 
@@ -60,4 +60,4 @@ function Todos() {
   );
 }
 
-export default Todos;
+export default TodosContainer;
