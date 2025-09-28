@@ -5,7 +5,7 @@ import { ClipLoader } from "react-spinners";
 
 import useTodos from "../hooks/useTodos";
 import TodoForm from "../components/TodoForm";
-import TodoList from "../components/SortableTodoList";
+import TodoList from "../components/list/SortableTodoList";
 import ErrorMessage from "../../../shared/components/ErrorMessage";
 import AnalogClock from "../../clock/AnalogClock";
 

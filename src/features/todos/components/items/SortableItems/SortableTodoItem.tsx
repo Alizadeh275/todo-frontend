@@ -1,5 +1,5 @@
-import type { Todo } from "../../types/todos";
-import Button from "../../../../shared/components/Button";
+import type { Todo } from "../../../types/todos";
+import Button from "../../../../../shared/components/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 

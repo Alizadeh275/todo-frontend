@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import type { Todo } from "../types/todos";
+import type { Todo } from "../../types/todos";
 import { X } from "lucide-react";
 
 type TodoDetailsModalProps = {

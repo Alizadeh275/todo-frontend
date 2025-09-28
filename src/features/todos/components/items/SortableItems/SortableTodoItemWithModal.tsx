@@ -1,11 +1,11 @@
 import { useState } from "react";
-import type { Todo } from "../../types/todos";
-import Button from "../../../../shared/components/Button";
+import type { Todo } from "../../../types/todos";
+import Button from "../../../../../shared/components/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Eye, X } from "lucide-react";
-import { getTodoColor } from "../../../../shared/utils/colors";
-import TodoDetailsModal from "../TodoDetailsRadixModal";
+import { getTodoColor } from "../../../../../shared/utils/colors";
+import TodoDetailsModal from "../../modals/TodoDetailsRadixModal";
 
 type TodoItemProps = {
   todo: Todo;
