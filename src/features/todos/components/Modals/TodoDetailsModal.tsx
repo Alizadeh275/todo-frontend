@@ -1,5 +1,5 @@
-import type { Todo } from "../types/todos";
-import Modal from "../../../shared/components/Modal";
+import type { Todo } from "../../types/todos";
+import Modal from "../../../../shared/components/Modal";
 
 type TodoDetailsModalProps = {
     todo: Todo;
