@@ -58,9 +58,9 @@ export default function TodoItem({ todo, onToggle, onDelete }: TodoItemProps) {
                 </div>
             </li>
 
-            {showDetailsModal && (
-                <TodoDetailsModal todo={todo} onClose={() => setShowDetailsModal(false)} />
-            )}
+
+            <TodoDetailsModal open={showDetailsModal} todo={todo} onClose={() => setShowDetailsModal(false)} />
+
 
             <DeleteConfirmationModal
                 open={showDeleteModal}
