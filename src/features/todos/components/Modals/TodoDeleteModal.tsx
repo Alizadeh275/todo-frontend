@@ -29,7 +29,7 @@ export default function DeleteConfirmationModal({
                     <Dialog.Close asChild>
                         <button
                             onClick={onClose}
-                            className="absolute top-3 left-3 rounded-full p-1 hover:bg-gray-100"
+                            className="cursor-pointer absolute top-3 left-3 rounded-full p-1 hover:bg-gray-100"
                         >
                             <X className="w-5 h-5 text-gray-500" />
                         </button>

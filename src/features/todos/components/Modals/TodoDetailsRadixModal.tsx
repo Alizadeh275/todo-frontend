@@ -19,7 +19,7 @@ export default function TodoDetailsRadixModal({ open, todo, onClose }: TodoDetai
                      rounded-lg bg-white p-6 shadow-xl focus:outline-none animate-in fade-in-50"
                 >
                     <Dialog.Close asChild>
-                        <button className="absolute top-3 left-3 rounded-full p-1 hover:bg-gray-100">
+                        <button className="cursor-pointer absolute top-3 left-3 rounded-full p-1 hover:bg-gray-100">
                             <X className="w-5 h-5 text-gray-500" />
                         </button>
                     </Dialog.Close>
