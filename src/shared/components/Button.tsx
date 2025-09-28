@@ -5,9 +5,12 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     className?: string;
 };
 
-export default function Button({ children, className, ...props }: ButtonProps) {
+export default function Button({ children, className = "", ...props }: ButtonProps) {
     return (
-        <button className={className} {...props}>
+        <button
+            className={`cursor-pointer ${className}`}
+            {...props}
+        >
             {children}
         </button>
     );
