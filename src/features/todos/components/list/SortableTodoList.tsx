@@ -9,7 +9,7 @@ import {
 } from "@dnd-kit/sortable";
 import type { Todo } from "../../types/todos";
 import SortableTodoItem from "../items/SortableItems/SortableTodoItemWithDeleteModal";
-import { Skeleton } from "@mui/material";
+import TodoItemSkeleton from "../items/TodoItemSkeleton";
 
 type SortableTodoListProps = {
   todos: Todo[];
@@ -18,6 +18,7 @@ type SortableTodoListProps = {
   onReorder: (oldIndex: number, newIndex: number) => void;
   loading?: boolean;
 };
+const placeholderCount = 6;
 
 export default function SortableTodoList({
   todos,
@@ -35,7 +36,6 @@ export default function SortableTodoList({
     }
   };
 
-  const placeholderCount = 5;
 
   return (
     <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
@@ -45,18 +45,7 @@ export default function SortableTodoList({
       >
         {loading
           ? Array.from({ length: placeholderCount }).map((_, i) => (
-            <div
-              key={`placeholder-${i}`}
-              className="flex justify-between items-center p-1 mb-1"
-            >
-              <Skeleton
-                variant="rectangular"
-                width="100%"
-                height={60} // height of full item
-                animation="wave"
-                style={{ borderRadius: 8 }}
-              />
-            </div>
+            <TodoItemSkeleton key={`placeholder-${i}`} />
           ))
           : todos.map((todo) => (
             <SortableTodoItem

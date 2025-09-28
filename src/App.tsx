@@ -1,4 +1,4 @@
-import TodosContainer from "./features/todos/containers/TodosContainerWithSkeleton"
+import TodosContainer from "./features/todos/containers/TodosContainer"
 
 function App() {
   return (

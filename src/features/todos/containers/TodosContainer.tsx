@@ -1,31 +1,22 @@
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import { ClipLoader } from "react-spinners";
 
 import useTodos from "../hooks/useTodos";
-import TodoForm from "../components/TodoForm";
+import TodoForm from "../components/forms/TodoForm";
 import TodoList from "../components/list/SortableTodoList";
 import ErrorMessage from "../../../shared/components/ErrorMessage";
-import AnalogClock from "../../clock/AnalogClock";
+import AnalogClock from "../../clock/AnalogClockWithSkeleton";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
   const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(6, 0);
 
-  // Called when the form is submitted
   const handleAddTodo = async (e: React.FormEvent) => {
     e.preventDefault();
     await handleAdd(newTodo);
     setNewTodo(""); // clear input after adding
   };
-
-  if (loading) return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <ClipLoader size={60} color="#3b82f6" />
-      <span className="text-gray-700 text-lg">در حال دریافت داده‌ها...</span>
-    </div>
-  );
 
   return (
     <>
@@ -39,25 +30,36 @@ function TodosContainer() {
         pauseOnHover
         draggable
       />
-      <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl">
+
+      <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl space-y-4">
+        {/* Clock with its own loader */}
         <div className="flex justify-center mb-4">
-          <AnalogClock size={140} />
+          <AnalogClock size={140} loading={loading} />
         </div>
 
+        {/* Error message */}
         {error && <ErrorMessage text={error} />}
 
+        {/* TodoForm with its own skeleton */}
+
         <TodoForm
+          loading={loading}
           newTodo={newTodo}
           setNewTodo={setNewTodo}
           handleAddTodo={handleAddTodo}
         />
 
+
+        {/* TodoList with its own skeletons */}
+
         <TodoList
+          loading={loading}
           todos={todos}
           onDelete={handleDelete}
           onToggle={handleToggle}
           onReorder={handleReorder}
         />
+
       </div>
     </>
   );
