@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
 
-export default function useFetch<T>(url: string, config?: AxiosRequestConfig) {
+export default function useFetch<T>(url: string, config?: AxiosRequestConfig, minDelay = 4000) {
     const [data, setData] = useState<T | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -12,6 +12,9 @@ export default function useFetch<T>(url: string, config?: AxiosRequestConfig) {
         const fetchData = async () => {
             setLoading(true);
             setError(null);
+
+            const startTime = Date.now();
+
             try {
                 const res = await axios.get<T>(url, config);
                 setData(res.data);
@@ -20,11 +23,20 @@ export default function useFetch<T>(url: string, config?: AxiosRequestConfig) {
                 else setError("خطا در بارگذاری داده‌ها");
                 console.error(err);
             } finally {
-                setLoading(false);
+                const elapsed = Date.now() - startTime;
+                const remaining = minDelay - elapsed;
+
+                if (remaining > 0) {
+                    // Wait for remaining time to reach minDelay
+                    setTimeout(() => setLoading(false), remaining);
+                } else {
+                    setLoading(false);
+                }
             }
         };
+
         fetchData();
-    }, [url]); // ESLint-safe, memoize config if needed
+    }, [url]); // memoize config if needed
 
     return { data, loading, error, setData, setError };
 }
