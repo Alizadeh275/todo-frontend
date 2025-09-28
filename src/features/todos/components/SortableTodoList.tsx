@@ -8,7 +8,7 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import type { Todo } from "../types/todos";
-import SortableTodoItem from "./SortableTodoItem";
+import SortableTodoItem from "./SortableTodoItemWithModal";
 
 type SortableTodoListProps = {
   todos: Todo[];

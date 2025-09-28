@@ -51,7 +51,6 @@ function TodosContainer() {
           setNewTodo={setNewTodo}
           handleAddTodo={handleAddTodo}
         />
-        {/* <h1 className="text-2xl font-iran mb-4">لیست کارها:</h1> */}
 
         <TodoList
           todos={todos}
