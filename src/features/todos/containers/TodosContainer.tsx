@@ -29,10 +29,18 @@ function TodosContainer() {
         rtl={true}
         pauseOnHover
         draggable
+        theme="light" // 👈 you can also set this to "dark" or "colored"
       />
 
-      <div className="max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl space-y-4">
-        {/* Clock with its own loader */}
+      <div
+        className="
+          max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl space-y-4
+          bg-white text-black
+          dark:bg-gray-800 dark:text-white
+          transition-colors
+        "
+      >
+        {/* Clock */}
         <div className="flex justify-center mb-4">
           <AnalogClock size={140} loading={loading} />
         </div>
@@ -40,8 +48,7 @@ function TodosContainer() {
         {/* Error message */}
         {error && <ErrorMessage text={error} />}
 
-        {/* TodoForm with its own skeleton */}
-
+        {/* TodoForm */}
         <TodoForm
           loading={loading}
           newTodo={newTodo}
@@ -49,9 +56,7 @@ function TodosContainer() {
           handleAddTodo={handleAddTodo}
         />
 
-
-        {/* TodoList with its own skeletons */}
-
+        {/* TodoList */}
         <TodoList
           loading={loading}
           todos={todos}
@@ -59,7 +64,6 @@ function TodosContainer() {
           onToggle={handleToggle}
           onReorder={handleReorder}
         />
-
       </div>
     </>
   );

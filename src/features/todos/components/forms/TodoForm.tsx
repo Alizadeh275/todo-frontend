@@ -29,14 +29,25 @@ export default function TodoForm({
                 value={newTodo}
                 onChange={(e) => setNewTodo(e.target.value)}
                 placeholder="کار جدید اضافه کن"
-                className="flex-1 p-2 border rounded-md"
+                className="
+                    flex-1 p-2 border rounded-md 
+                    bg-white text-gray-800 border-gray-300 
+                    dark:bg-gray-800 dark:text-white dark:border-gray-600
+                    focus:outline-none focus:ring-2 focus:ring-blue-500
+                    dark:focus:ring-blue-400"
             />
+
             <Button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full sm:w-auto"
+                className="
+                    bg-blue-500 text-white px-4 py-2 rounded-md w-full sm:w-auto
+                    hover:bg-blue-600 
+                    dark:bg-blue-600 dark:hover:bg-blue-700
+                "
             >
                 اضافه کردن
             </Button>
+
         </form>
     );
 }
