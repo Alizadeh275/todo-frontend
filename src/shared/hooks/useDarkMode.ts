@@ -1,9 +1,11 @@
 // hooks/useDarkMode.ts
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 export function useDarkMode() {
-    const [isDark, setIsDark] = useState(
-        () => document.documentElement.classList.contains("dark")
+    // Use localStorage to store dark mode preference
+    const [isDark, setIsDark] = useLocalStorage("dark-mode",
+        document.documentElement.classList.contains("dark")
     );
 
     useEffect(() => {
@@ -14,5 +16,7 @@ export function useDarkMode() {
         }
     }, [isDark]);
 
-    return { isDark, toggle: () => setIsDark((prev) => !prev) };
+    const toggle = () => setIsDark(prev => !prev);
+
+    return { isDark, toggle };
 }
