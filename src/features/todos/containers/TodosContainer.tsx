@@ -10,7 +10,7 @@ import AnalogClock from "../../clock/AnalogClockWithSkeleton";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
-  const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(6, 0);
+  const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(10, 0);
 
   const handleAddTodo = async (e: React.FormEvent) => {
     e.preventDefault();

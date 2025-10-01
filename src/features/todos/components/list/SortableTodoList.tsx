@@ -18,7 +18,7 @@ type SortableTodoListProps = {
   onReorder: (oldIndex: number, newIndex: number) => void;
   loading?: boolean;
 };
-const placeholderCount = 6;
+const placeholderCount = 10;
 
 export default function SortableTodoList({
   todos,
