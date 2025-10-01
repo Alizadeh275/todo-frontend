@@ -8,7 +8,6 @@ export default function ThemeToggle() {
 
     useEffect(() => {
         const handleScroll = () => {
-            // show only if scrollY is at top (0)
             setVisible(window.scrollY === 0);
         };
 
@@ -22,13 +21,13 @@ export default function ThemeToggle() {
             className={`
         cursor-pointer
         fixed top-4 left-4 p-2 rounded-full
-        bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200
+        bg-gray-50 dark:bg-gray-800
         transition-all duration-300
         ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}
       `}
             aria-label="Toggle theme"
         >
-            {isDark ? <Moon size={20} /> : <Sun size={20} />}
+            {isDark ? <Moon size={25} className="text-yellow-400" /> : <Sun size={25} className="text-yellow-400" />}
         </button>
     );
 }
