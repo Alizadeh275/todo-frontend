@@ -82,7 +82,7 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
-            showToast("کار با موفقیت بروز شد!", "success");
+            showToast("وضعیت کار با موفقیت تغییر کرد!", "success");
 
         } catch (err: unknown) {
             showToast("خطا در بروزرسانی وضعیت کار", "error")
