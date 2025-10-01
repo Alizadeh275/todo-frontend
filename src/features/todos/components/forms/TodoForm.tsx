@@ -1,6 +1,5 @@
 import Button from "../../../../shared/components/Button";
 import Input from "../../../../shared/components/Input";
-import TodoFormSkeleton from "./TodoFormSkeleton";
 
 type TodoFormProps = {
     newTodo: string;
@@ -13,11 +12,8 @@ export default function TodoForm({
     newTodo,
     setNewTodo,
     handleAddTodo,
-    loading = false,
 }: TodoFormProps) {
 
-    if (loading)
-        return <TodoFormSkeleton />
 
     return (
         <form

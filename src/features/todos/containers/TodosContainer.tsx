@@ -50,7 +50,6 @@ function TodosContainer() {
 
         {/* TodoForm */}
         <TodoForm
-          loading={loading}
           newTodo={newTodo}
           setNewTodo={setNewTodo}
           handleAddTodo={handleAddTodo}
