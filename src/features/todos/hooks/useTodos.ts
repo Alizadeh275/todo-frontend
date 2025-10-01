@@ -54,6 +54,10 @@ export default function useTodos(limit = 10, skip = 0) {
         try {
             await deleteTodo(id);
 
+
+        } catch (err: unknown) {
+            console.log(err)
+        } finally {
             setData?.({
                 todos: todos.filter((t) => t.id !== id),
                 total: (data?.total ?? 0) - 1,
@@ -61,18 +65,12 @@ export default function useTodos(limit = 10, skip = 0) {
                 skip: data?.skip ?? skip,
             });
             showToast("کار با موفقیت حذف شد!", "success");
-
-        } catch (err: unknown) {
-            showToast("خطا در حذف کار", "error");
-            console.error(err);
-
         }
     };
 
     const handleToggle = async (todo: Todo) => {
         setError?.(null);
         try {
-            await toggleComplete(todo.id, !todo.completed);
 
             setData?.({
                 todos: todos.map((t) =>
@@ -85,8 +83,10 @@ export default function useTodos(limit = 10, skip = 0) {
             showToast("وضعیت کار با موفقیت تغییر کرد!", "success");
 
         } catch (err: unknown) {
-            showToast("خطا در بروزرسانی وضعیت کار", "error")
             console.error(err);
+        } finally {
+            await toggleComplete(todo.id, !todo.completed);
+
         }
     };
 
