@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Clock from "react-clock";
-import 'react-clock/dist/Clock.css';
 import Skeleton from '@mui/material/Skeleton';
 
 type AnalogClockProps = {
@@ -12,7 +11,7 @@ function AnalogClock({ size = 100, loading = false }: AnalogClockProps) {
     const [value, setValue] = useState(new Date());
 
     useEffect(() => {
-        if (loading) return; // don't start interval while loading
+        if (loading) return;
         const interval = setInterval(() => setValue(new Date()), 1000);
         return () => clearInterval(interval);
     }, [loading]);
