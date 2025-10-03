@@ -2,18 +2,25 @@
 import { Link } from "react-router-dom";
 import { useUser } from "../shared/hooks/useUser";
 import ThemeToggle from "../shared/components/ThemeToggle";
-import { HomeIcon } from "@heroicons/react/24/outline"; // npm install @heroicons/react
+import { HomeIcon } from "@heroicons/react/24/outline";
 
 export default function Navbar() {
     const { user } = useUser();
 
     return (
         <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16 items-center">
+            <div className="w-full flex justify-between h-16 items-center px-2 sm:px-4 lg:px-8">
 
+                {/* Left side: Profile + Toggle */}
+                <div>
+                    <Link to="/">
+                        <HomeIcon className="w-6 h-6 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                    </Link>
+                </div>
 
+                {/* Right side: Home icon */}
 
+                <div className="flex items-center gap-3">
                     <Link to="/profile">
                         {user?.avatarUrl ? (
                             <img
@@ -28,12 +35,7 @@ export default function Navbar() {
                         )}
                     </Link>
 
-                    <Link to="/">
-                        <HomeIcon className="w-6 h-6 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors" />
-                    </Link>
                     <ThemeToggle />
-
-
                 </div>
             </div>
         </header>
