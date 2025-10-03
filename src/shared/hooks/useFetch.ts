@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import type { AxiosRequestConfig } from "axios";
+import { showToast } from "../utils/toasts";
 
 export default function useFetch<T>(url: string, config?: AxiosRequestConfig, minDelay = 4000) {
     const [data, setData] = useState<T | null>(null);
@@ -19,8 +20,8 @@ export default function useFetch<T>(url: string, config?: AxiosRequestConfig, mi
                 const res = await axios.get<T>(url, config);
                 setData(res.data);
             } catch (err: unknown) {
-                if (err instanceof Error) setError(err.message);
-                else setError("خطا در بارگذاری داده‌ها");
+                showToast("خطا در دریافت داده‌ها", "error");
+
                 console.error(err);
             } finally {
                 const elapsed = Date.now() - startTime;

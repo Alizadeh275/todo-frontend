@@ -5,12 +5,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import useTodos from "../hooks/useTodos";
 import TodoForm from "../components/forms/TodoForm";
 import TodoList from "../components/list/SortableTodoList";
-import ErrorMessage from "../../../shared/components/ErrorMessage";
 import AnalogClock from "../../clock/AnalogClockWithSkeleton";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
-  const { todos, loading, error, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(10, 0);
+  const { todos, loading, handleAdd, handleDelete, handleToggle, handleReorder } = useTodos(10, 0);
 
   const handleAddTodo = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,8 +44,6 @@ function TodosContainer() {
           <AnalogClock size={140} loading={loading} />
         </div>
 
-        {/* Error message */}
-        {error && <ErrorMessage text={error} />}
 
         {/* TodoForm */}
         <TodoForm
