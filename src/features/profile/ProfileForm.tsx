@@ -1,13 +1,13 @@
-// File: src/features/profile/components/ProfileForm.tsx
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUser, type User } from "../../shared/hooks/useUser";
+import { useUser, type User } from "../../shared/hooks/userContext";
 import AvatarUploader from "../../shared/components/AvatarUploader";
 import { showToast } from "../../shared/utils/toasts";
 
 export default function ProfileForm() {
     const { user, updateUser } = useUser();
-    const [avatarBase64, setAvatarBase64] = useState<string | null>(user.avatarUrl || null);
+
+    const [localAvatar, setLocalAvatar] = useState<string | null>(user.avatarUrl || null);
 
     const { register, handleSubmit, setValue } = useForm<User>({
         defaultValues: user || {
@@ -18,20 +18,20 @@ export default function ProfileForm() {
         },
     });
 
-    // Load user data into form on mount / when user changes
+    // Load user data into form
     useEffect(() => {
         if (!user) return;
         Object.entries(user).forEach(([key, value]) => {
             setValue(key as keyof User, value);
         });
-        setAvatarBase64(user.avatarUrl || null);
+        setLocalAvatar(user.avatarUrl || null);
     }, [user, setValue]);
 
     const onSubmit = (data: User) => {
-        // Merge avatarBase64 into user object
-        updateUser({ ...data, avatarUrl: avatarBase64 });
-        showToast("تغییرات با موفقیت ذخیره شد.", "success")
-        console.log("Updated profile:", { ...data, avatarUrl: avatarBase64 });
+        // Only update context on submit
+        updateUser({ ...data, avatarUrl: localAvatar });
+        showToast("تغییرات با موفقیت ذخیره شد.", "success");
+        console.log("Updated profile:", { ...data, avatarUrl: localAvatar });
     };
 
     return (
@@ -41,9 +41,12 @@ export default function ProfileForm() {
         >
             <h2 className="text-xl font-bold mb-4 text-center">مدیریت پروفایل</h2>
 
-            {/* Centered Avatar */}
+            {/* Avatar */}
             <div className="flex justify-center">
-                <AvatarUploader avatarUrl={avatarBase64} onFileChange={setAvatarBase64} />
+                <AvatarUploader
+                    avatarUrl={localAvatar}
+                    onFileChange={setLocalAvatar} // only update local state
+                />
             </div>
 
             {/* Name */}
@@ -74,7 +77,6 @@ export default function ProfileForm() {
                 />
             </div>
 
-            {/* Submit */}
             <button
                 type="submit"
                 className="cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-2 transition"

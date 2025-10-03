@@ -1,8 +1,8 @@
 // src/layout/Navbar.tsx
 import { Link } from "react-router-dom";
-import { useUser } from "../shared/hooks/useUser";
+import { useUser } from "../shared/hooks/userContext";
 import ThemeToggle from "../shared/components/ThemeToggle";
-import { Home, User2 } from "lucide-react"; // npm install lucide-react
+import { Home, User2 } from "lucide-react";
 
 export default function Navbar() {
     const { user } = useUser();
@@ -28,8 +28,8 @@ export default function Navbar() {
                                 className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
                             />
                         ) : (
-                            <div className="w-8 h-8 rounded-full  text-gray-700 dark:text-gray-200 hover:text-blue-500  bg-gray-50 dark:bg-gray-800 flex items-center justify-center">
-                                <User2 className="w-6 h-6" />
+                            <div className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-300 dark:border-gray-600">
+                                <User2 className="w-5 h-5 text-gray-700 dark:text-gray-200" />
                             </div>
                         )}
                     </Link>
