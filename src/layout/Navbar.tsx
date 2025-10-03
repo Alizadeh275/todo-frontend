@@ -12,31 +12,27 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16 items-center">
 
-                    {/* Left: Theme toggle + Profile avatar */}
-                    <div className="flex items-center gap-3">
-                        <ThemeToggle />
 
-                        <Link to="/profile">
-                            {user?.avatarUrl ? (
-                                <img
-                                    src={user.avatarUrl}
-                                    alt="Profile"
-                                    className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
-                                />
-                            ) : (
-                                <div className="w-8 h-8 rounded-full bg-gray-400 dark:bg-gray-700 flex items-center justify-center text-white text-sm">
-                                    P
-                                </div>
-                            )}
-                        </Link>
-                    </div>
 
-                    {/* Right: Home icon */}
-                    <div>
-                        <Link to="/">
-                            <HomeIcon className="w-6 h-6 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors" />
-                        </Link>
-                    </div>
+                    <Link to="/profile">
+                        {user?.avatarUrl ? (
+                            <img
+                                src={user.avatarUrl}
+                                alt="Profile"
+                                className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
+                            />
+                        ) : (
+                            <div className="w-8 h-8 rounded-full bg-gray-400 dark:bg-gray-700 flex items-center justify-center text-white text-sm">
+                                P
+                            </div>
+                        )}
+                    </Link>
+
+                    <Link to="/">
+                        <HomeIcon className="w-6 h-6 text-gray-700 dark:text-gray-200 hover:text-blue-500 transition-colors" />
+                    </Link>
+                    <ThemeToggle />
+
 
                 </div>
             </div>

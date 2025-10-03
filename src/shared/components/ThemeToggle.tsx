@@ -4,17 +4,15 @@ import { Moon, Sun } from "lucide-react";
 export default function ThemeToggle() {
     const { isDark, toggle } = useDarkMode();
 
-
     return (
         <button
             onClick={toggle}
             className={`
-                cursor-pointer
-                fixed top-4 left-4 p-2 rounded-full
-                bg-gray-50 dark:bg-gray-800
-                transition-all duration-300
-                hover:scale-110 hover:shadow-lg
-            `}
+        cursor-pointer p-2 rounded-full
+        bg-gray-50 dark:bg-gray-800
+        transition-all duration-300
+        hover:scale-110 hover:shadow-lg
+      `}
             aria-label="Toggle theme"
         >
             {isDark ? (
