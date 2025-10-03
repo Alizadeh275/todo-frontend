@@ -20,7 +20,7 @@ export const showToast = (
     options?: ToastOptions
 ) => {
     const toastOptions = { ...defaultOptions, ...options };
-
+    console.log("show toasssssssssssssst")
     switch (type) {
         case "success":
             toast.success(message, toastOptions);

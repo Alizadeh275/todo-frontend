@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import useTodos from "../hooks/useTodos";
@@ -19,17 +18,7 @@ function TodosContainer() {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={true}
-        pauseOnHover
-        draggable
-        theme="light" // 👈 you can also set this to "dark" or "colored"
-      />
+
 
       <div
         className="

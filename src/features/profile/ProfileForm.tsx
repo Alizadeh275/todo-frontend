@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useUser, type User } from "../../shared/hooks/useUser";
 import AvatarUploader from "../../shared/components/AvatarUploader";
+import { showToast } from "../../shared/utils/toasts";
 
 export default function ProfileForm() {
     const { user, updateUser } = useUser();
@@ -29,7 +30,7 @@ export default function ProfileForm() {
     const onSubmit = (data: User) => {
         // Merge avatarBase64 into user object
         updateUser({ ...data, avatarUrl: avatarBase64 });
-        alert("پروفایل ذخیره شد ✅");
+        showToast("تغییرات با موفقیت ذخیره شد.", "success")
         console.log("Updated profile:", { ...data, avatarUrl: avatarBase64 });
     };
 
@@ -76,7 +77,7 @@ export default function ProfileForm() {
             {/* Submit */}
             <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-2 transition"
+                className="cursor-pointer w-full bg-blue-600 hover:bg-blue-700 text-white rounded-lg py-2 transition"
             >
                 ذخیره تغییرات
             </button>
