@@ -1,33 +1,36 @@
 // utils/toast.ts
-import { toast as toastifyToast } from "react-toastify";
+import { toast } from "react-toastify";
 import type { ToastOptions } from "react-toastify";
 
 export type ToastType = "success" | "error" | "info";
 
-type ToastLibrary = "react-toastify" | "react-hot-toast";
-
-let currentLibrary: ToastLibrary = "react-toastify"; // default
-
-export const setToastLibrary = (lib: ToastLibrary) => {
-    currentLibrary = lib;
+const defaultOptions: ToastOptions = {
+    position: "bottom-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
 };
 
-export const showToast = (message: string, type: ToastType = "info", options?: ToastOptions) => {
-    if (currentLibrary === "react-toastify") {
-        switch (type) {
-            case "success":
-                toastifyToast.success(message, options);
-                break;
-            case "error":
-                toastifyToast.error(message, options);
-                break;
-            case "info":
-            default:
-                toastifyToast.info(message, options);
-                break;
-        }
-    } else {
-        // placeholder for react-hot-toast later
-        console.log(`[HotToast ${type}] ${message}`);
+export const showToast = (
+    message: string,
+    type: ToastType = "info",
+    options?: ToastOptions
+) => {
+    const toastOptions = { ...defaultOptions, ...options };
+
+    switch (type) {
+        case "success":
+            toast.success(message, toastOptions);
+            break;
+        case "error":
+            toast.error(message, toastOptions);
+            break;
+        case "info":
+        default:
+            toast.info(message, toastOptions);
+            break;
     }
 };
