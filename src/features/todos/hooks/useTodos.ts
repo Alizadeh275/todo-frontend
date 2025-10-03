@@ -4,7 +4,7 @@ import { arrayMove } from "@dnd-kit/sortable";
 import useFetch from "../../../shared/hooks/useFetch";
 import { showToast } from "../../../shared/utils/toasts";
 import type { Todo, TodosResponse } from "../types/todos";
-import { addTodo, deleteTodo, toggleComplete } from "../services/todos";
+import { deleteTodo, toggleComplete } from "../services/todos";
 
 
 
@@ -19,8 +19,7 @@ export default function useTodos(limit = 10, skip = 0) {
         if (!todoText.trim()) return;
         setError?.(null);
         try {
-            let created = await addTodo({ todo: todoText, userId, completed: false });
-            created = { ...created, id: Math.round(Date.now() + Math.random()) };
+            const created = { todo: todoText, userId, completed: false, id: Math.round(Date.now() + Math.random()) };
 
             setData?.({
                 todos: [created, ...todos],
@@ -28,13 +27,12 @@ export default function useTodos(limit = 10, skip = 0) {
                 limit: data?.limit ?? limit,
                 skip: data?.skip ?? skip,
             });
-            showToast("کار با موفقیت اضافه شد!", "success");
 
         } catch (err: unknown) {
-            if (err instanceof Error) setError?.("خطا در اضافه کردن کار: " + err.message);
-            else setError?.("خطا در اضافه کردن کار");
             console.error(err);
-            showToast("خطا در اضافه کردن کار!", "error");
+        } finally {
+            showToast("کار با موفقیت اضافه شد!", "success");
+
         }
     };
 
