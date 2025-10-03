@@ -1,30 +1,26 @@
-// File: src/shared/components/AvatarUploader.tsx
 import { useState, useEffect } from "react";
 import { Avatar, IconButton } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const LOCAL_STORAGE_KEY = "todo:user-avatar";
 
 type Props = {
-    onChange?: (base64: string | null) => void;
+    avatarUrl?: string | null;
+    onFileChange: (base64: string | null) => void;
 };
 
-export default function AvatarUploader({ onChange }: Props) {
-    const [avatar, setAvatar] = useState<string | null>(null);
+export default function AvatarUploader({ avatarUrl, onFileChange }: Props) {
+    const [avatar, setAvatar] = useState<string | null>(avatarUrl || null);
 
-    // Load avatar from localStorage on mount
     useEffect(() => {
-        const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (stored) setAvatar(stored);
-    }, []);
+        setAvatar(avatarUrl || null);
+    }, [avatarUrl]);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] ?? null;
         if (!file) {
             setAvatar(null);
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-            if (onChange) onChange(null);
+            onFileChange(null);
             return;
         }
 
@@ -32,22 +28,20 @@ export default function AvatarUploader({ onChange }: Props) {
         reader.onloadend = () => {
             const base64 = reader.result as string;
             setAvatar(base64);
-            localStorage.setItem(LOCAL_STORAGE_KEY, base64);
-            if (onChange) onChange(base64);
+            onFileChange(base64);
         };
         reader.readAsDataURL(file);
     };
 
     const handleDelete = () => {
         setAvatar(null);
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
-        if (onChange) onChange(null);
+        onFileChange(null);
     };
 
     return (
-        <div className="flex items-center gap-4 mb-4">
-            <Avatar src={avatar ?? undefined} sx={{ width: 80, height: 80 }} />
-            <div className="flex flex-col gap-2">
+        <div className="flex flex-col items-center mb-4 gap-2">
+            <Avatar src={avatar ?? undefined} sx={{ width: 100, height: 100 }} />
+            <div className="flex gap-2">
                 <label>
                     <IconButton color="primary" component="span">
                         <PhotoCamera />
