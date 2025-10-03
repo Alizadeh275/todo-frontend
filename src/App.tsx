@@ -1,7 +1,7 @@
 // App.tsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
-import TodosContainer from "./features/todos/containers/TodosContainer";
+import TodosPage from "./features/todos/pages/TodosPage";
 import ProfilePage from "./features/profile/ProfilePage";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <MainLayout>
         <Routes>
-          <Route path="/" element={<TodosContainer />} />
+          <Route path="/" element={<TodosPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </MainLayout>

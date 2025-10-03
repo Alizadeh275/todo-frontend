@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import useTodos from "../hooks/useTodos";
 import TodoForm from "../components/forms/TodoForm";
 import TodoList from "../components/list/SortableTodoList";
-import AnalogClock from "../../clock/AnalogClockWithSkeleton";
 
 function TodosContainer() {
   const [newTodo, setNewTodo] = useState("");
@@ -19,20 +18,7 @@ function TodosContainer() {
   return (
     <>
 
-
-      <div
-        className="
-          max-w-md mx-auto mt-10 p-4 rounded-xl shadow-xl space-y-4
-          bg-white text-black
-          dark:bg-gray-800 dark:text-white
-          transition-colors
-        "
-      >
-        {/* Clock */}
-        <div className="flex justify-center mb-4">
-          <AnalogClock size={140} loading={loading} />
-        </div>
-
+      <div>
 
         {/* TodoForm */}
         <TodoForm
