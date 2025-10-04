@@ -4,12 +4,16 @@ import App from './App.tsx'
 import "./index.css"
 
 import { UserProvider } from "./shared/hooks/userContext.tsx";
+import { DarkModeProvider } from "./shared/contexts/DarkModeContext";
 
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <DarkModeProvider>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </DarkModeProvider>
+
   </StrictMode>,
 )
