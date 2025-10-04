@@ -3,8 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import "./index.css"
 
-import { UserProvider } from "./shared/hooks/userContext.tsx";
-import { DarkModeProvider } from "./shared/contexts/DarkModeContext";
+import { UserProvider, DarkModeProvider } from "./shared/contexts";
 
 
 createRoot(document.getElementById('root')!).render(

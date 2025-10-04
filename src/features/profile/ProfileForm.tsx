@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useUser, type User } from "../../shared/hooks/userContext";
+import { useUserContext, type User } from "../../shared/contexts/userContext";
 import AvatarUploader from "../../shared/components/AvatarUploader";
 import { showToast } from "../../shared/utils/toasts";
 
 export default function ProfileForm() {
-    const { user, updateUser } = useUser();
+    const { user, updateUser } = useUserContext();
 
     const [localAvatar, setLocalAvatar] = useState<string | null>(user.avatarUrl || null);
 
