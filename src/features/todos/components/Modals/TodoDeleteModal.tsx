@@ -21,11 +21,11 @@ export default function DeleteConfirmationModal({
         <Dialog.Root open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
             <Dialog.Portal>
                 {/* Overlay */}
-                <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm dark:bg-black/60" />
+                <Dialog.Overlay className="fixed z-20 inset-0 bg-black/40 backdrop-blur-sm dark:bg-black/60" />
 
                 {/* Content */}
                 <Dialog.Content
-                    className="fixed top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 
+                    className="fixed z-30 top-1/2 left-1/2 w-[90%] max-w-md -translate-x-1/2 -translate-y-1/2 
                                rounded-lg bg-white p-6 shadow-xl focus:outline-none
                                dark:bg-gray-700 dark:text-gray-100"
                 >
