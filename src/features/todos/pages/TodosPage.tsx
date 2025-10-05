@@ -1,5 +1,5 @@
 import TodosContainer from "../containers/TodosContainer";
-import AnalogClock from "../../clock/AnalogClockWithSkeleton";
+import AnalogClock from "../../clock/AnalogClock";
 
 export default function TodosPage() {
     return (
