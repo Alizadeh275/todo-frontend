@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import ProfileForm from "./ProfileForm";
-import { useUserContext, type User } from "../../shared/contexts/userContext";
+import { useUserContext, type User } from "../../shared/contexts/UserContext";
 import { useEffect, useState } from "react";
 import { showToast } from "../../shared/utils/toasts";
 

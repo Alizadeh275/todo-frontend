@@ -1,5 +1,5 @@
 import AvatarUploader from "../../shared/components/AvatarUploader";
-import type { User } from "../../shared/contexts/userContext";
+import type { User } from "../../shared/contexts/UserContext";
 import type { UseFormReturn } from "react-hook-form";
 
 interface ProfileFormViewProps {
