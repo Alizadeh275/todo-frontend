@@ -1,9 +1,9 @@
-import ProfileForm from "./ProfileForm";
+import ProfileFormContainer from "./ProfileFormContainer";
 
 export default function ProfilePage() {
     return (
         <div className="p-4">
-            <ProfileForm />
+            <ProfileFormContainer />
         </div>
     );
 }

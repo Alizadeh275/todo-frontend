@@ -1,38 +1,21 @@
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { useUserContext, type User } from "../../shared/contexts/userContext";
 import AvatarUploader from "../../shared/components/AvatarUploader";
-import { showToast } from "../../shared/utils/toasts";
+import type { User } from "../../shared/contexts/userContext";
+import type { UseFormReturn } from "react-hook-form";
 
-export default function ProfileForm() {
-    const { user, updateUser } = useUserContext();
+interface ProfileFormViewProps {
+    form: UseFormReturn<User>;
+    localAvatar: string | null;
+    setLocalAvatar: (url: string | null) => void;
+    onSubmit: (data: User) => void;
+}
 
-    const [localAvatar, setLocalAvatar] = useState<string | null>(user.avatarUrl || null);
-
-    const { register, handleSubmit, setValue } = useForm<User>({
-        defaultValues: user || {
-            name: "",
-            email: "",
-            bio: "",
-            avatarUrl: null,
-        },
-    });
-
-    // Load user data into form
-    useEffect(() => {
-        if (!user) return;
-        Object.entries(user).forEach(([key, value]) => {
-            setValue(key as keyof User, value);
-        });
-        setLocalAvatar(user.avatarUrl || null);
-    }, [user, setValue]);
-
-    const onSubmit = (data: User) => {
-        // Only update context on submit
-        updateUser({ ...data, avatarUrl: localAvatar });
-        showToast("تغییرات با موفقیت ذخیره شد.", "success");
-        console.log("Updated profile:", { ...data, avatarUrl: localAvatar });
-    };
+export default function ProfileForm({
+    form,
+    localAvatar,
+    setLocalAvatar,
+    onSubmit,
+}: ProfileFormViewProps) {
+    const { register, handleSubmit } = form;
 
     return (
         <form
@@ -41,15 +24,10 @@ export default function ProfileForm() {
         >
             <h2 className="text-xl font-bold mb-4 text-center">مدیریت پروفایل</h2>
 
-            {/* Avatar */}
             <div className="flex justify-center">
-                <AvatarUploader
-                    avatarUrl={localAvatar}
-                    onFileChange={setLocalAvatar} // only update local state
-                />
+                <AvatarUploader avatarUrl={localAvatar} onFileChange={setLocalAvatar} />
             </div>
 
-            {/* Name */}
             <div>
                 <label className="block mb-1 font-medium">نام</label>
                 <input
@@ -58,7 +36,6 @@ export default function ProfileForm() {
                 />
             </div>
 
-            {/* Email */}
             <div>
                 <label className="block mb-1 font-medium">ایمیل</label>
                 <input
@@ -68,7 +45,6 @@ export default function ProfileForm() {
                 />
             </div>
 
-            {/* Bio */}
             <div>
                 <label className="block mb-1 font-medium">بیو</label>
                 <textarea
