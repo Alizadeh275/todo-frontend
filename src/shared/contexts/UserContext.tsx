@@ -1,4 +1,4 @@
-// src/shared/hooks/UserContext.tsx
+// src/shared/contexts/UserContext.tsx
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 export interface User {
