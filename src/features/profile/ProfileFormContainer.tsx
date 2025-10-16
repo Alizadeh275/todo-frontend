@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import ProfileForm from "./ProfileForm";
-import { useUserContext, type User } from "../../shared/contexts/UserContext";
+// import { useUserContext, type User } from "../../shared/contexts/UserContext";
 import { useEffect, useState } from "react";
 import { showToast } from "../../shared/utils/toasts";
+import { useUserStore, type User } from '../../shared/stores/useUserStore'
 
 export default function ProfileFormContainer() {
-    const { user, updateUser } = useUserContext();
+    const { user, updateUser } = useUserStore();
     const [localAvatar, setLocalAvatar] = useState<string | null>(user.avatarUrl || null);
     const form = useForm<User>({ defaultValues: user });
 
