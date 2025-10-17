@@ -1,12 +1,12 @@
 import AvatarUploader from "../../shared/components/AvatarUploader";
-import type { User } from "../../shared/contexts/UserContext";
 import type { UseFormReturn } from "react-hook-form";
+import type { UserSchema } from "../../shared/validations/userSchema";
 
 interface ProfileFormViewProps {
-    form: UseFormReturn<User>;
+    form: UseFormReturn<UserSchema>;
     localAvatar: string | null;
     setLocalAvatar: (url: string | null) => void;
-    onSubmit: (data: User) => void;
+    onSubmit: (data: UserSchema) => void;
 }
 
 export default function ProfileForm({
@@ -15,7 +15,7 @@ export default function ProfileForm({
     setLocalAvatar,
     onSubmit,
 }: ProfileFormViewProps) {
-    const { register, handleSubmit } = form;
+    const { register, handleSubmit, formState: { errors } } = form;
 
     return (
         <form
@@ -32,9 +32,11 @@ export default function ProfileForm({
                 <label className="block mb-1 font-medium">نام:</label>
                 <input
                     placeholder="کاربر نمونه"
-                    {...register("name", { required: "نام الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
+                    {...register("name")}
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 
+                               placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
             </div>
 
             <div>
@@ -42,9 +44,11 @@ export default function ProfileForm({
                 <input
                     type="email"
                     placeholder="user@example.com"
-                    {...register("email", { required: "ایمیل الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
+                    {...register("email")}
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 
+                               placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
@@ -52,8 +56,10 @@ export default function ProfileForm({
                 <textarea
                     placeholder="توضیحاتی درباره خودتان ..."
                     {...register("bio")}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 
+                               placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
+                {errors.bio && <p className="text-red-500 text-sm mt-1">{errors.bio.message}</p>}
             </div>
 
             <button
