@@ -33,7 +33,7 @@ export default function ProfileForm({
                 <input
                     placeholder="کاربر نمونه"
                     {...register("name", { required: "نام الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
             </div>
 
@@ -43,7 +43,7 @@ export default function ProfileForm({
                     type="email"
                     placeholder="user@example.com"
                     {...register("email", { required: "ایمیل الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
             </div>
 
@@ -52,7 +52,7 @@ export default function ProfileForm({
                 <textarea
                     placeholder="توضیحاتی درباره خودتان ..."
                     {...register("bio")}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-gray-100"
                 />
             </div>
 
