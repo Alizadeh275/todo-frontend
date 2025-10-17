@@ -18,19 +18,31 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                {/* Right side: Profile + Theme toggle */}
-                <div className="flex items-center gap-3">
-                    <Link to="/profile">
+                {/* Right side: Welcome + Profile + Theme toggle */}
+                <div className="flex items-center gap-4">
+                    <Link to="/profile" className="flex items-center gap-2">
                         {user?.avatarUrl ? (
-                            <img
-                                src={user.avatarUrl}
-                                alt="Profile"
-                                className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
-                            />
+                            <>
+                                <span className="text-gray-700 dark:text-gray-200 text-sm sm:text-base">
+                                    خوش آمدی {user.name}!
+                                </span>
+                                <img
+                                    src={user.avatarUrl}
+                                    alt="Profile"
+                                    className="w-8 h-8 rounded-full object-cover border border-gray-300 dark:border-gray-600"
+                                />
+
+                            </>
                         ) : (
-                            <div className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-300 dark:border-gray-600">
-                                <User2 className="w-5 h-5 text-gray-700 dark:text-gray-200" />
-                            </div>
+                            <>
+                                <span className="text-gray-700 dark:text-gray-200 text-sm sm:text-base">
+                                    خوش آمدی {user?.name || "کاربر"}!
+                                </span>
+                                <div className="w-8 h-8 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center border border-gray-300 dark:border-gray-600">
+                                    <User2 className="w-5 h-5 text-gray-700 dark:text-gray-200" />
+                                </div>
+
+                            </>
                         )}
                     </Link>
 
