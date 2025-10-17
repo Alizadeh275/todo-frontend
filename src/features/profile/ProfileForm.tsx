@@ -29,27 +29,30 @@ export default function ProfileForm({
             </div>
 
             <div>
-                <label className="block mb-1 font-medium">نام</label>
+                <label className="block mb-1 font-medium">نام:</label>
                 <input
+                    placeholder="کاربر نمونه"
                     {...register("name", { required: "نام الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
                 />
             </div>
 
             <div>
-                <label className="block mb-1 font-medium">ایمیل</label>
+                <label className="block mb-1 font-medium">ایمیل:</label>
                 <input
                     type="email"
+                    placeholder="user@example.com"
                     {...register("email", { required: "ایمیل الزامی است" })}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
                 />
             </div>
 
             <div>
-                <label className="block mb-1 font-medium">بیو</label>
+                <label className="block mb-1 font-medium">بیو:</label>
                 <textarea
+                    placeholder="توضیحاتی درباره خودتان ..."
                     {...register("bio")}
-                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600"
+                    className="w-full border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600 placeholder-gray-400 dark:placeholder-gray-500"
                 />
             </div>
 

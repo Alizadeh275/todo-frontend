@@ -15,9 +15,9 @@ interface UserState {
 }
 
 const defaultUser: User = {
-    name: 'کاربر نمونه',
-    email: 'user@example.com',
-    bio: 'توضیحاتی درباره خودتان...',
+    name: '',
+    email: '',
+    bio: '',
     avatarUrl: null,
 }
 
